@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="/style/irma-web-frontend/irma-web-frontend.min.css" />
+<script src="/scripts/nuts-auth/browser.js"></script>
+
 <section class="nuts-login-form irma-web-form">
     <header class="header">
         <p>Login with <i class="irma-web-logo">IRMA</i></p>
@@ -37,3 +40,15 @@
         </section>
     </section>
 </section>
+
+
+<script>
+  nutsLogin = nutsAuth.init({
+    nutsAuthUrl: "http://localhost:11323",
+    qrEl: 'qrcode',
+    logLevel: 'debug',
+    postTokenPath: '/session/login',
+    afterSuccessPath: '/users'
+  })
+  nutsLogin.start();
+</script>

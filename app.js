@@ -26,6 +26,8 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/scripts/nuts-auth', express.static(__dirname + '/node_modules/@nuts-foundation/auth/dist'));
+app.use('/style/irma-web-frontend', express.static(__dirname + '/node_modules/irma-web-frontend/dist'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
