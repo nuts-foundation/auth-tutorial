@@ -1,9 +1,7 @@
 <!--The nuts auth styleguide -->
-<link rel="stylesheet" href="//nuts-foundation.github.io/irma-web-frontend/application.css" />
-<!--A lib to render qr-codes -->
-<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@gh-pages/qrcode.min.js"></script>
-<!--The nuts auth js lib -->
-<script src="https://cdn.jsdelivr.net/npm/@nuts-foundation/auth@0.1.1/index.min.js"></script>
+<link rel="stylesheet" href="/style/irma-web-frontend/irma-web-frontend.min.css" />
+<!--The nuts auth package-->
+<script src="/scripts/nuts-auth/browser.js"></script>
 
 <section class="nuts-login-form irma-web-form">
     <header class="header">
@@ -20,7 +18,7 @@
             <p>One moment please...</p>
         </section>
         <section class="centered initialized">
-            <div id="qrcode"></div>
+            <canvas id="qrcode"></canvas>
         </section>
         <section class="centered waiting-for-user">
             <div class="irma-web-waiting-for-user-animation"></div>
@@ -46,13 +44,13 @@
 </section>
 
 <script>
-  nutsLogin = NutsLogin.init({
+  nutsLogin = nutsAuth.init({
     nutsAuthUrl: "http://localhost:11323",
     qrEl: 'qrcode',
     logLevel: 'debug',
-    postTokenPath: '/login',
+    postTokenPath: '/session/login',
     afterSuccessPath: '/users'
+  });
 
-  })
   nutsLogin.start();
 </script>

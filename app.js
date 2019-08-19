@@ -7,7 +7,7 @@ var sassMiddleware = require('node-sass-middleware');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var loginRouter = require('./routes/login');
+var sessionRouter = require('./routes/session');
 
 var app = express();
 
@@ -26,10 +26,15 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
+
+// include nuts-auth script
+app.use('/scripts/nuts-auth', express.static(__dirname + '/node_modules/@nuts-foundation/auth/dist'));
+app.use('/style/irma-web-frontend', express.static(__dirname + '/node_modules/irma-web-frontend/dist'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/login', loginRouter);
+app.use('/session', sessionRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
