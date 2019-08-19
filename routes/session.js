@@ -27,4 +27,10 @@ router.post('/login', async function (req, res, next) {
   res.status(200).send(validationResponse);
 });
 
+router.get('/logout', function (req, res, next) {
+  res.clearCookie('nutstoken')
+  res.clearCookie('agb')
+  res.redirect('/')
+});
+
 module.exports = router;
