@@ -1,0 +1,23 @@
+<%- include('layouts/header'); %>
+<h1>Patients</h1>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Date of birth</th>
+    </tr>
+    </thead>
+    <% patients.forEach( (patient)=> { %>
+        <tr>
+            <td>
+                <%= patient.name[0].given %>&nbsp;<%= patient.name[0].family %>
+            </td>
+            <td><%= patient.gender%></td>
+            <td><%= patient.birthDate%></td>
+        </tr>
+    <% }) %>
+</table>
+
+<%- include('layouts/footer'); %>
