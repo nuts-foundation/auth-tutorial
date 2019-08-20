@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "@nuts-foundation/auth": "^0.3.1",
+    "@nuts-foundation/auth": "^0.3.2",
     "bootstrap": "^4.3.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
