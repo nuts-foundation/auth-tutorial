@@ -1,4 +1,6 @@
-<h1>Welcome user</h1>
-<p>Your agb is: <%= agb %></p>
+<%- include('layouts/header'); %>
+    <h1>Welcome user</h1>
+    <p>Your agb is: <%= agb %></p>
 
-<a href="/session/logout">Click here to logout</a>
+    <a href="/session/logout">Click here to logout</a>
+<%- include('layouts/footer'); %>
