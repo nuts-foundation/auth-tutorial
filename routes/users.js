@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var {registryResource} = require('../resources/registry');
 
 /* GET users listing. */
-router.all('/', function(req, res, next) {
+router.all('/', function (req, res, next) {
   // check if the cookie is set
   if ('nutstoken' in req.cookies) {
     next();
@@ -12,8 +13,9 @@ router.all('/', function(req, res, next) {
 });
 
 // render the user page with the agb code
-router.get('/', function (req, res, next) {
+router.get('/', async (req, res, next) => {
+  let careProviderName = (await registryResource.byId(res.app.get('careProviderId'))).name
   const agb = req.cookies.agb;
-  res.render('user', {agb});
+  res.render('user', {agb, careProviderName});
 });
 module.exports = router;

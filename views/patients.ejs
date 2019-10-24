@@ -6,16 +6,17 @@
     <tr>
         <th>Name</th>
         <th>Gender</th>
-        <th>Date of birth</th>
+        <th colspan="2">Date of birth</th>
     </tr>
     </thead>
     <% patients.forEach( (patient)=> { %>
         <tr>
             <td>
-                <%= patient.name[0].given %>&nbsp;<%= patient.name[0].family %>
+                <%= patient.name.given %>&nbsp;<%= patient.name.family %>
             </td>
             <td><%= patient.gender%></td>
             <td><%= patient.birthDate%></td>
+            <td><a href="/patients/<%= patient.id%>/consent">Consent</a></td>
         </tr>
     <% }) %>
 </table>

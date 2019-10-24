@@ -8,6 +8,7 @@ module.exports =
       "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table><tbody><tr><td>Naam: Roos Dalstra</td><td>BSN: ?</td></tr><tr><td>Geboortedatum: 1964-03-04</td><td>Geslacht: Vrouw (Gehuwd)</td></tr><tr><td>Tel: ?<br />E-mail: ?</td><td>Adres: ?</td></tr><tr><td>Contactpersoon: Joost Dalstra (echtgenoot)</td><td>Huisarts: ?</td></tr></tbody></table></div>"
     },
     "active": true,
+    "identifier": [{"use": "official", "system": "http://fhir.nl/fhir/NamingSystem/bsn", "value": "999999991"}],
     "name": [{
       "use": "usual",
       "family": "Dalstra",

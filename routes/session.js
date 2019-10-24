@@ -1,16 +1,23 @@
-var express = require('express');
-var router = express.Router();
-const { nutsAuthClient } = require('@nuts-foundation/auth');
+const express = require('express');
+const router = express.Router();
+const {nutsAuthClient} = require('@nuts-foundation/auth');
+const {footerHeaderValues} = require('./layouts');
 
-router.get('/login', function (req, res, next) {
-  res.render('login', {})
+router.get('/login', async (req, res, next) => {
+  const {careProviderName} = await footerHeaderValues(req, res);
+  res.render('login', {careProviderName})
 });
 
-router.post('/login', async function (req, res, next) {
+router.post('/login', async (req, res, next) => {
   const nutsToken = req.body.nuts_auth_token
 
   const client = nutsAuthClient('http://localhost:11323', 'Demo EHR');
-  const validationResponse = await client.validateToken(nutsToken);
+  let validationResponse
+  try {
+    validationResponse = await client.validateToken(nutsToken);
+  } catch(e) {
+    return res.status(500).send("unable to verify token. Is the nuts-node down?")
+  }
 
   const sessionIsValid = validationResponse.validation_result === "VALID";
 

@@ -1,0 +1,59 @@
+<%- include('layouts/header'); %>
+<h1>Patient consent</h1>
+
+<div class="card">
+    <div class="card-body">
+        <div class="card-title"><h5> <%= patient.name.given %> <%= patient.name.family %> </h5></div>
+        <p class="card-text">
+            <%= patient.gender %><br>
+            <%= patient.birthDate %>
+        </p>
+    </div>
+</div>
+
+<% if (sessionFlash.notify) { %>
+    <% sessionFlash.notify.forEach((msg)=>{ %>
+        <div class="alert alert-info"><%= msg %></div>
+    <% }) %>
+<% } %>
+
+<% if (sessionFlash.error) { %>
+    <% sessionFlash.error.forEach((msg)=>{ %>
+        <div class="alert alert-danger"><%= msg %></div>
+    <% }) %>
+<% } %>
+
+<h2>Register New Consent</h2>
+<form class="container" method="post">
+    <div class="form-group">
+        <label for="externalCareProvider">Which care provider can access the data?</label>
+        <select class="form-control" name="externalCareProvider" id="externalCareProvider">
+            <option disabled selected value>Select one</option>
+            <% careProvidersWithoutConsent.forEach((careProvider)=> { %>
+                <option value="<%= careProvider.identifier %>"><%= careProvider.name %></option>
+            <% }) %>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Register consent</button>
+</form>
+
+<h2>All consents</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Custodian</th>
+        <th>Actor</th>
+        <th>Resource(s)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% consents.forEach(async (consent)=> { %>
+        <tr>
+            <td><%= consent.custodianName %></td>
+            <td><%= consent.actorName %></td>
+            <td><%= consent.resources.join(',') %></td>
+        </tr>
+    <% }) %>
+    </tbody>
+</table>
+<%- include('layouts/footer'); %>

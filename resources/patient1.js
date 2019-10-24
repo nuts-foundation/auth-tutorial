@@ -11,7 +11,7 @@ module.exports =
       "status": "additional",
       "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div><p>BSN: 123456782</p><p>Naam: Irma Jongeneel-de Haas</p><p>Geslacht: Vrouw</p><p>Geboortedatum: 1970-03-04</p><p>Telefoon: 030-2345456</p><p>E-mail: user@home.nl</p><p>Adres: Straatweg 12bII, 1000AA Amsterdam</p><p>Burgerlijke staat: gehuwd</p><p>Eerste relatie/contactpersoon is haar man Gerard Eckdom via telefoonnummer 015-23456789</p><p>Huisarts: Huisartsenpraktijk Van Eijk</p></div></div>"
     },
-    "identifier": [{"use": "official", "system": "http://fhir.nl/fhir/NamingSystem/bsn", "value": "123456782"}],
+    "identifier": [{"use": "official", "system": "http://fhir.nl/fhir/NamingSystem/bsn", "value": "999999990"}],
     "active": true,
     "name": [{
       "extension": [{"url": "http://hl7.org/fhir/StructureDefinition/humanname-assembly-order", "valueCode": "NL4"}],

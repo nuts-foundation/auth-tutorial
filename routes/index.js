@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var {registryResource} = require('../resources/registry');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Nuts Demo EHR' });
+router.get('/', async (req, res, next) => {
+  let careProviderName = (await registryResource.byId(res.app.get('careProviderId'))).name
+  res.render('index', {title: 'Nuts Demo EHR', careProviderName});
 });
 
 module.exports = router;
